@@ -17,15 +17,12 @@ The following four experiments are in the repository.
 Abstract ESN vs. Classical ESN in a closed-loop setup using the Mackey-Glass timeseries[3].
 
 *mackey_noisy_open*:
-
 Abstract ESN vs. Classical ESN in an open-loop setup using the Mackey-Glass timeseries.
 
 *santafe_noisy_closed*:
-
 Abstract ESN vs. Classical ESN in a closed-loop setup using the Santa Fe D timeseries[4].
 
 *santafe_noisy_open*:
-
 Abstract ESN vs. Classical ESN in an open-loop setup using the Santa Fe D timeseries.
 
 ## References
