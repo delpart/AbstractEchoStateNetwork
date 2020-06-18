@@ -25,7 +25,6 @@ if __name__ == '__main__':
     with open('dataset/SantaFe.D.cont.txt', 'r') as f:
         test = list(map(float, f.readlines()))
 
-    # 0.8,0.1,0.2
     n_neurons = 100
     n_inputs = 1
     connectivity = 0.2

@@ -24,7 +24,6 @@ if __name__ == '__main__':
     train = data[:8000]
     test = data[2000:]
 
-    #0.4, 1.1, 0.5
     n_neurons = 100
     n_inputs = 1
     connectivity = 1.
@@ -35,8 +34,8 @@ if __name__ == '__main__':
 
     np.random.seed(42)
 
-    # with open(path / 'results_open.csv', 'w') as f:
-    #     print('amplitude', 'n', 'type', 'MSE', 'MAPE', file=f, sep=',')
+    with open(path / 'results_open.csv', 'w') as f:
+        print('amplitude', 'n', 'type', 'MSE', 'MAPE', file=f, sep=',')
 
     for du in np.arange(0.27, 1.0, 0.01):
         dy = du/10
@@ -69,8 +68,6 @@ if __name__ == '__main__':
                 (Y_classical[i, ...], _) = esn.predict_classical(u + noise, 0)
                 (Y_abstract[i, ...], _) = esn.predict_abstract(u + noise, 0)
 
-
-            'amplitude', 'n', 'type', 'MSE', 'MAPE'
             with open(path/'results_open.csv', 'a') as f:
                 print(du, n, 'abstract', mean_squared_error(test[1:], Y_abstract), mean_absolute_percentage_error(test[1:], Y_abstract), file=f, sep=',')
                 print(du, n, 'classical', mean_squared_error(test[1:], Y_classical), mean_absolute_percentage_error(test[1:], Y_classical), file=f, sep=',')

@@ -24,7 +24,6 @@ if __name__ == '__main__':
     train = data[:8000]
     test = data[2000:]
 
-    # 0.4, 1.1, 0.5
     n_neurons = 100
     n_inputs = 1
     connectivity = 1.
@@ -37,7 +36,6 @@ if __name__ == '__main__':
 
     with open(path / 'results_closed.csv', 'w') as f:
         print('amplitude', 'n', 'type', 'MSE', 'MAPE', file=f, sep=',')
-
 
     for du in np.arange(0, 1.0, 0.01):
         dy = du/10
@@ -56,12 +54,9 @@ if __name__ == '__main__':
         esn_abstract.calculate_abstract_weights(train[1 + washout:], dy, X.T, dX.T)
         esn_classical.calculate_classical_weights(train[1 + washout:], X.T)
 
-
         x, _ = esn_abstract.step(train[-1], du)
 
         esn_classical.xc = np.copy(esn_abstract.xc)
-        # esn_classical.Wout = np.copy(esn_abstract.Wout)
-        # esn_classical.Wopt = np.copy(esn_abstract.Wopt)
 
         x_pretest = np.copy(x)
 
@@ -82,8 +77,6 @@ if __name__ == '__main__':
                 u_classical = Y_classical[i, ...]
                 u_abstract = Y_abstract[i, ...]
 
-
-            #'amplitude', 'n', 'type', 'MSE', 'MAPE'
             with open(path/'results_closed.csv', 'a') as f:
                 print(du, n, 'abstract', mean_squared_error(test[1:], Y_abstract), mean_absolute_percentage_error(test[1:], Y_abstract), file=f, sep=',')
                 print(du, n, 'classical', mean_squared_error(test[1:], Y_classical), mean_absolute_percentage_error(test[1:], Y_classical), file=f, sep=',')
